@@ -1,0 +1,47 @@
+{
+  "name": "react-basic-starter",
+  "version": "1.0.0",
+  "description": "An example react-basic project",
+  "repository": "lumihq/react-basic-starter",
+  "scripts": {
+    "start": "webpack-dev-server -wd --port 3000",
+    "start-public": "webpack-dev-server -wd --port 3000 --host 0.0.0.0",
+    "build": "webpack -p",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build:purs": "pulp build",
+    "pscid:build": "pulp build",
+    "pscid:test": "pulp test",
+    "test": "pulp test",
+    "clean": "rm -rf output build",
+    "clean:everything": "npm run clean && rm -rf node_modules bower_components"
+  },
+  "dependencies": {
+    "react": "16.6.1",
+    "react-dom": "16.6.1"
+  },
+  "devDependencies": {
+    "bower": "^1.8.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "1.0.1",
+    "gh-pages": "2.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "0.4.4",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "pulp": "^12.3.0",
+    "purescript": "^0.12.0",
+    "purescript-psa": "0.7.3",
+    "purs-loader": "^3.2.0",
+    "resource-hints-webpack-plugin": "0.0.2",
+    "sass-loader": "7.1.0",
+    "script-ext-html-webpack-plugin": "2.1.2",
+    "source-map-loader": "0.2.4",
+    "style-loader": "0.23.1",
+    "webpack": "4.25.1",
+    "webpack-bundle-analyzer": "3.0.3",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10",
+    "webpack-manifest-plugin": "2.0.4",
+    "webpack-subresource-integrity": "1.3.0"
+  }
+}

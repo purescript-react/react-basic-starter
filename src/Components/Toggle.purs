@@ -3,7 +3,7 @@ module Components.Toggle where
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import React.Basic (Component, JSX, StateUpdate(..), capture_, createComponent, make, makeStateless)
+import React.Basic (Component, JSX, StateUpdate(..), capture_, createComponent, make)
 import React.Basic.DOM as R
 
 type Props =

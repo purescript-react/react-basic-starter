@@ -3,8 +3,9 @@ module Components.Toggle where
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import React.Basic (Component, JSX, StateUpdate(..), capture_, createComponent, make)
+import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
+import React.Basic.DOM.Events (capture_)
 
 type Props =
   { initialValue :: Boolean
@@ -17,25 +18,22 @@ component :: Component Props
 component = createComponent "App"
 
 toggle :: Props -> JSX
-toggle = make component { initialState, update, render }
+toggle = make component { initialState, render }
   where
     initialState =
       Nothing
 
-    update self = case _ of
-      Toggle ->
-        Update $ map not $ Just $
-          -- this is a silly example; copying props to state
-          -- is generally a bad idea
-          fromMaybe self.props.initialValue self.state
-
     render self =
-      R.button
-        { onClick: capture_ self Toggle
-        , children:
-            [ R.text
-                if fromMaybe self.props.initialValue self.state
-                  then "On"
-                  else "Off"
-            ]
-        }
+      let
+        on = fromMaybe self.props.initialValue self.state
+      in
+        R.button
+          { onClick: capture_ do
+              self.setState (Just <<< not <<< fromMaybe on)
+          , children:
+              [ R.text
+                  if on
+                    then "On"
+                    else "Off"
+              ]
+          }

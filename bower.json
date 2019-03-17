@@ -1,16 +1,11 @@
 {
   "name": "react-basic-starter",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "output"
-  ],
+  "ignore": ["**/.*", "node_modules", "bower_components", "output"],
   "dependencies": {
     "purescript-prelude": "^4.1.0",
     "purescript-console": "^4.1.0",
     "purescript-effect": "^2.0.0",
-    "purescript-react-basic": "^6.0.0"
+    "purescript-react-basic": "^8.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"

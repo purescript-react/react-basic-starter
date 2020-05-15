@@ -1,5 +1,5 @@
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -65,7 +65,7 @@ module.exports = (_env, options) => ({
     }
   },
   plugins: [
-    new CleanWebpackPlugin(["build"]),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "styles.css"
     }),
@@ -93,7 +93,7 @@ module.exports = (_env, options) => ({
       {
         test: /\.js$/,
         loader: "source-map-loader",
-        exclude: /node_modules|bower_components/
+        exclude: /node_modules/
       },
       {
         oneOf: [
@@ -107,21 +107,12 @@ module.exports = (_env, options) => ({
             use: {
               loader: "purs-loader",
               options: {
-                bundleOutput: "output/bundle.js",
-                // purs bundling breaks webpack's chunk splitting
-                bundle: false, // isProd(options),
-                warnings: true,
-                watch: options.watch,
-                pscArgs: {
-                  // Set this to true and rebuild with
-                  // `rm -rf output && npx pulp build -- --sourcemaps`
-                  // to debug with sourcemaps.
-                  // Disabled by default because it slow down
-                  // and frequently breaks webpack/purs-loader,
-                  // and the "locals" in the browser debugger don't
-                  // make sense anyway.
-                  sourceMaps: false
-                }
+		src: [
+	          'src/**/*.purs'
+		],
+		spago: true,
+		watch: !isProd(options),
+		pscIde: true
               }
             }
           }

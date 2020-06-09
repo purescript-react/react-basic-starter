@@ -1,18 +1,27 @@
 module Components.App where
 
 import Prelude
+import Components.Router (Route(..), useRoute)
+import Data.Either (Either(..))
+import Pages.About (mkAbout)
+import Pages.Home (mkHome)
+import Pages.NotFound (mkNotFound)
+import React.Basic.Hooks as React
 
-import Components.Toggle (toggle)
-import React.Basic (Component, JSX, createComponent, makeStateless)
-import React.Basic.DOM as R
-
-component :: Component Unit
-component = createComponent "App"
-
-app :: JSX
-app = unit # makeStateless component \_ ->
-  R.div_
-    [ R.h1_ [ R.text "Hello world" ]
-    , toggle { initialValue: true }
-    , toggle { initialValue: false }
-    ]
+mkApp :: React.Component Unit
+mkApp = do
+  notFound <- mkNotFound
+  routeFor <- mkRouteFor
+  React.component "App" \_ -> React.do
+    route <- useRoute
+    pure
+      $ case route of
+          Left _ -> notFound unit
+          Right match -> routeFor match
+  where
+  mkRouteFor = do
+    home <- mkHome
+    about <- mkAbout
+    pure case _ of
+      Home -> home unit
+      About -> about unit

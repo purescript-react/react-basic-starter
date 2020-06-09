@@ -35,7 +35,7 @@ Replace the overrides' "{=}" (an empty record) with the following idea
 The "//" or "⫽" means "merge these two records and
   when they have the same value, use the one on the right:"
 -------------------------------
-let overrides =
+let override =
   { packageName =
       upstream.packageName // { updateEntity1 = "new value", updateEntity2 = "new value" }
   , packageName =
@@ -121,8 +121,71 @@ let additions =
 let upstream =
       https://github.com/purescript/package-sets/releases/download/psc-0.13.6-20200507/packages.dhall sha256:9c1e8951e721b79de1de551f31ecb5a339e82bbd43300eb5ccfb1bf8cf7bbd62
 
-let overrides = {=}
+let overrides =
+  { react-basic = upstream.react-basic // { version = "next", dependencies = [ "effect", "record" ] }
+  }
 
-let additions = {=}
+let additions =
+  { react-basic-dom =
+      { dependencies =
+          [ "effect"
+          , "foreign-object"
+          , "react-basic"
+          , "unsafe-coerce"
+          , "web-dom"
+          , "web-events"
+          , "web-file"
+          , "web-html"
+          ]
+      , repo = "https://github.com/lumihq/purescript-react-basic-dom.git"
+      , version = "main"
+      }
+  , react-basic-classic =
+      { dependencies =
+          [ "aff"
+          , "nullable"
+          , "react-basic"
+          , "functions"
+          , "effect"
+          , "maybe"
+          ]
+      , repo = "https://github.com/lumihq/purescript-react-basic-classic.git"
+      , version = "main"
+      }
+  , react-basic-hooks =
+      { dependencies =
+          [ "prelude"
+          , "effect"
+          , "aff"
+          , "newtype"
+          , "maybe"
+          , "numbers"
+          , "either"
+          , "type-equality"
+          , "datetime"
+          , "web-html"
+          , "aff-promise"
+          , "unsafe-reference"
+          , "indexed-monad"
+          , "react-basic"
+          , "unsafe-coerce"
+          ]
+      , repo = "https://github.com/spicydonuts/purescript-react-basic-hooks.git"
+      , version = "next"
+      }
+  , react-basic-emotion =
+      { dependencies =
+          [ "colors"
+          , "foreign"
+          , "numbers"
+          , "prelude"
+          , "react-basic"
+          , "typelevel-prelude"
+          , "unsafe-reference"
+          ]
+      , repo = "https://github.com/lumihq/purescript-react-basic-emotion.git"
+      , version = "main"
+      }
+  }
 
 in  upstream // overrides // additions

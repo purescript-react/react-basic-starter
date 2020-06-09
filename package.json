@@ -1,47 +1,51 @@
 {
   "name": "react-basic-starter",
-  "version": "1.0.0",
-  "description": "An example react-basic project",
-  "repository": "lumihq/react-basic-starter",
+  "version": "0.1.0",
+  "description": "React Basic documentation and starter project",
+  "main": "src/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumihq/react-basic-starter.git"
+  },
+  "keywords": [
+    "react",
+    "react-basic",
+    "react-basic-classic",
+    "react-basic-hooks",
+    "hooks",
+    "purescript"
+  ],
+  "author": "Madeline Trotter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lumihq/react-basic-starter/issues"
+  },
+  "homepage": "https://github.com/lumihq/react-basic-starter#readme",
   "scripts": {
-    "start": "webpack-dev-server -wd --port 3000",
-    "start-public": "webpack-dev-server -wd --port 3000 --host 0.0.0.0",
-    "build": "webpack -p",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build:purs": "spago build",
-    "pscid:build": "spago build",
-    "pscid:test": "spago test",
-    "test": "spago test",
-    "clean": "rm -rf output build",
-    "clean:everything": "npm run clean && rm -rf node_modules .spago"
+    "build": "spago build; true > output/Main-bundled.js",
+    "bundle:parcel": "rm -rf dist; parcel build src/index.html --public-url ./",
+    "bundle:purs": "spago bundle-module --main Main --to output/Main-bundled.js",
+    "bundle": "npm run bundle:purs && npm run bundle:parcel",
+    "clean": "rm -rf output node_modules .spago .cache dist",
+    "deploy": "gh-pages -d dist",
+    "prebundle": "npm run build",
+    "predeploy": "npm run bundle",
+    "prestart": "npm run build",
+    "pscid": "pscid",
+    "start": "parcel start src/index.html",
+    "test": "spago test"
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@emotion/core": "^10.0.28",
+    "highlight.js": "^10.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "3.5.3",
-    "gh-pages": "2.2.0",
-    "html-webpack-plugin": "^4.3.0",
-    "mini-css-extract-plugin": "0.9.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "gh-pages": "^3.0.0",
+    "parcel-bundler": "^1.12.4",
     "purescript": "^0.13.6",
-    "purescript-psa": "^0.7.3",
-    "purs-loader": "^3.7.1",
-    "resource-hints-webpack-plugin": "0.0.2",
-    "sass-loader": "8.0.2",
-    "script-ext-html-webpack-plugin": "^2.1.4",
-    "source-map-loader": "0.2.4",
-    "spago": "^0.15.2",
-    "style-loader": "1.2.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.43.0",
-    "webpack-bundle-analyzer": "^3.7.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-manifest-plugin": "^2.2.0",
-    "webpack-subresource-integrity": "^1.4.1"
+    "spago": "^0.15.2"
   }
 }

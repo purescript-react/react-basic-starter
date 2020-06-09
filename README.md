@@ -1,15 +1,7 @@
 # react-basic-starter
 
-Fork or clone this repo to begin
+Yes yes, another starter.. 😅
 
-## Install dependencies
+This one isn't intended to be production ready today, but it's got the latest experimental React release along with a decent PureScript dev experience.
 
-`npm i && npx spago install`
-
-## Develop
-
-`npm start`
-
-## Build and deploy (gh-pages)
-
-`npm run deploy`
+A simple `make` will pull deps, build, and bundle. `make dev` will run a dev server watching the `output` folder. Use your PureScript IDE plugin or `make build` to build individual changes.

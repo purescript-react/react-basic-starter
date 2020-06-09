@@ -1,0 +1,14 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+  - node
+  - "lts/*"
+
+cache: npm
+
+install:
+  - npm ci
+
+script:
+  - npm run bundle

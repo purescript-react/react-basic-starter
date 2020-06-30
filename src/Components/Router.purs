@@ -28,6 +28,8 @@ data Route
   = Home
   | About
 
+derive instance eqRoute :: Eq Route
+
 derive instance genericRoute :: Generic Route _
 
 key :: forall entity. RouteDuplex' (Key entity)

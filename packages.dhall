@@ -122,7 +122,7 @@ let upstream =
       https://github.com/purescript/package-sets/releases/download/psc-0.13.6-20200507/packages.dhall sha256:9c1e8951e721b79de1de551f31ecb5a339e82bbd43300eb5ccfb1bf8cf7bbd62
 
 let overrides =
-  { react-basic = upstream.react-basic // { version = "next", dependencies = [ "effect", "record" ] }
+  { react-basic = upstream.react-basic // { version = "v15.0.0", dependencies = [ "effect", "record" ] }
   }
 
 let additions =
@@ -138,7 +138,7 @@ let additions =
           , "web-html"
           ]
       , repo = "https://github.com/lumihq/purescript-react-basic-dom.git"
-      , version = "main"
+      , version = "v1.0.0"
       }
   , react-basic-classic =
       { dependencies =
@@ -150,7 +150,7 @@ let additions =
           , "maybe"
           ]
       , repo = "https://github.com/lumihq/purescript-react-basic-classic.git"
-      , version = "main"
+      , version = "v1.0.1"
       }
   , react-basic-hooks =
       { dependencies =
@@ -171,7 +171,7 @@ let additions =
           , "unsafe-coerce"
           ]
       , repo = "https://github.com/spicydonuts/purescript-react-basic-hooks.git"
-      , version = "next"
+      , version = "v6.0.0"
       }
   , react-basic-emotion =
       { dependencies =
@@ -184,7 +184,7 @@ let additions =
           , "unsafe-reference"
           ]
       , repo = "https://github.com/lumihq/purescript-react-basic-emotion.git"
-      , version = "main"
+      , version = "v4.2.2"
       }
   }
 

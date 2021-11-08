@@ -3,7 +3,7 @@ module Components.Toggle where
 import Prelude
 
 import Data.Maybe (Maybe(..), fromMaybe)
-import React.Basic (Component, JSX, createComponent, make)
+import React.Basic.Classic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (capture_)
 

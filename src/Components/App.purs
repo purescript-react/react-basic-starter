@@ -3,7 +3,7 @@ module Components.App where
 import Prelude
 
 import Components.Toggle (toggle)
-import React.Basic (Component, JSX, createComponent, makeStateless)
+import React.Basic.Classic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 
 component :: Component Unit

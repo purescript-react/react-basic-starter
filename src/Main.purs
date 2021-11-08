@@ -2,7 +2,7 @@ module Main where
 
 import Prelude
 
-import Components.App (app)
+import Components.App (classicApp, mkApp)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Exception (throw)
@@ -15,6 +15,8 @@ import Web.HTML.Window (document)
 main :: Effect Unit
 main = do
   root <- getElementById "root" =<< (map toNonElementParentNode $ document =<< window)
+  hookApp <- mkApp
   case root of
     Nothing -> throw "Root element not found."
-    Just r  -> render app r
+    -- Just r  -> render classicApp r -- classic-only app is pure func
+    Just r  -> render hookApp r -- Hooks app runs in Effect

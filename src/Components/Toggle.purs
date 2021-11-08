@@ -33,7 +33,7 @@ toggle = make component { initialState, render }
           , children:
               [ R.text
                   if on
-                    then "On"
-                    else "Off"
+                    then "Classic On"
+                    else "Classic Off"
               ]
           }
